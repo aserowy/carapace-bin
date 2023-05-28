@@ -69,13 +69,13 @@ func pathSnippet(shell string) (snippet string) {
 	case "nushell":
 		snippet = fmt.Sprintf(`
 if "Path" in $env {
-    let-env PATH = ($env.Path | split row (char esep) | append %v)
+    let-env Path = ($env.Path | split row (char esep) | append %v)
 }
 
 if "PATH" in $env {
     let-env PATH = ($env.PATH | split row (char esep) | append %v)
 }`,
-			binDir)
+			binDir, binDir)
 
 	case "powershell":
 		snippet = fmt.Sprintf(`[Environment]::SetEnvironmentVariable("PATH", "%v" + [IO.Path]::PathSeparator + [Environment]::GetEnvironmentVariable("PATH"))`, binDir)
