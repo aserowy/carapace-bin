@@ -67,6 +67,7 @@ func pathSnippet(shell string) (snippet string) {
 		snippet = fmt.Sprintf(`fish_add_path '%v'`, binDir)
 
 	case "nushell":
+		fixedBinDir := strings.ReplaceAll(binDir, `\`, `\\`)
 		snippet = fmt.Sprintf(`
 if "Path" in $env {
     let-env Path = ($env.Path | split row (char esep) | append "%v")
@@ -75,7 +76,7 @@ if "Path" in $env {
 if "PATH" in $env {
     let-env PATH = ($env.PATH | split row (char esep) | append "%v")
 }`,
-			binDir, binDir)
+			fixedBinDir, fixedBinDir)
 
 	case "powershell":
 		snippet = fmt.Sprintf(`[Environment]::SetEnvironmentVariable("PATH", "%v" + [IO.Path]::PathSeparator + [Environment]::GetEnvironmentVariable("PATH"))`, binDir)
