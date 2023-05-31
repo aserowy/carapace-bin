@@ -69,11 +69,11 @@ func pathSnippet(shell string) (snippet string) {
 	case "nushell":
 		snippet = fmt.Sprintf(`
 if "Path" in $env {
-    let-env Path = ($env.Path | split row (char esep) | append %v)
+    let-env Path = ($env.Path | split row (char esep) | append "%v")
 }
 
 if "PATH" in $env {
-    let-env PATH = ($env.PATH | split row (char esep) | append %v)
+    let-env PATH = ($env.PATH | split row (char esep) | append "%v")
 }`,
 			binDir, binDir)
 
