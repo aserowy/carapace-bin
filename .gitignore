@@ -15,6 +15,7 @@ cmd/shim/shim
 completers/*/*_completer
 completers/gh_completer/cmd/action/api.github.com.json
 completers_release
+.direnv
 dist
 docs/book
 out.gif
